@@ -187,6 +187,8 @@ Creates a new post in the database. All fields are required.
 
 ### Happy hacking
 
+![Project Screenshot](docs/assets/TDD.png)
+
 See [original repository](https://github.com/nathsouzadev/twidio).
 
 [LICENSE](/LICENSE)
