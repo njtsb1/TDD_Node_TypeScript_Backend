@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDD Backend API Documentation</title>
+    <!-- Google Fonts & Font Awesome para Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="dark-mode">
+
+    <!-- Topbar Header -->
+    <header class="topbar">
+        <div class="logo-area">
+            <div class="logo-box">TDD</div>
+            <div>
+                <h1>TDD Backend API</h1>
+                <p>Node.js + TypeScript + TDD</p>
+            </div>
+        </div>
+        <div class="topbar-actions">
+            <!-- Seletor de Idioma -->
+            <div class="language-selector">
+                <label id="lang-label" for="lang-select" class="sr-only">Choose Language</label>
+                <select id="lang-select" aria-labelledby="lang-label">
+                    <option value="en" selected>EN-US</option>
+                    <option value="pt">PT-BR</option>
+                    <option value="es">ES</option>
+                </select>
+            </div>
+            <!-- Alternador de Tema -->
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light mode">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+            <a href="https://github.com/njtsb1/TDD_Node_TypeScript_Backend" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="GitHub Repository">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <span class="api-status"><span class="status-dot"></span> <span data-i18n="apiOnline">API Online</span></span>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" aria-label="Main Navigation">
+            <div class="nav-section">
+                <h2 data-i18n="navGeneral">VISÃO GERAL</h2>
+                <ul>
+                    <li><a href="#" class="active"><i class="fa-solid fa-house"></i> <span data-i18n="navDashboard">Dashboard</span></a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h2 data-i18n="navPosts">POSTAGENS</h2>
+                <ul>
+                    <li><a href="#" class="tab-link active-tab" data-tab="all-posts"><i class="fa-solid fa-list"></i> <span data-i18n="navAllPosts">Todas as postagens</span></a></li>
+                    <li><a href="#" class="tab-link" data-tab="delete-posts"><i class="fa-solid fa-trash"></i> <span data-i18n="navDeletePost">Excluir postagem</span></a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h2 data-i18n="navTests">TESTES</h2>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-flask"></i> <span data-i18n="navRunTests">Executar testes</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-chart-pie"></i> <span data-i18n="navCoverage">Cobertura</span></a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h2 data-i18n="navDocumentation">DOCUMENTAÇÃO</h2>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-file-lines"></i> <span data-i18n="navApiDocs">API Docs</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-code"></i> <span data-i18n="navExamples">Exemplos</span></a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <p><strong>TDD Backend</strong></p>
+                <p>Node.js + TypeScript</p>
+                <p class="version"><span class="status-dot green"></span> <span data-i18n="footerVersion">Versão 1.0.0</span></p>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <header class="content-header">
+                <div class="title-row">
+                    <h2 data-i18n="mainTitle">Postagens</h2>
+                    <span class="badge-api">API</span>
+                </div>
+                <p class="subtitle" data-i18n="mainSubtitle">Gerencie e consulte as postagens dos usuários</p>
+                
+                <!-- Inner Dashboard Tabs -->
+                <div class="inner-tabs" role="tablist">
+                    <button class="inner-tab active" role="tab" aria-selected="true" data-tab="all-posts" data-i18n="tabAll">Todas as postagens</button>
+                    <button class="inner-tab" role="tab" aria-selected="false" data-tab="delete-posts" data-i18n="tabDelete">Excluir postagem</button>
+                </div>
+            </header>
+
+            <!-- TAB 1: GET /users/:userId/posts -->
+            <section id="all-posts" class="tab-content active-content">
+                <div class="card-endpoint">
+                    <div class="endpoint-header">
+                        <div class="endpoint-badge get">GET</div>
+                        <div class="endpoint-path">/users/:userId/posts</div>
+                        <button class="btn-test" data-i18n="btnTest">Testar endpoint</button>
+                    </div>
+                    <p class="endpoint-description" data-i18n="getDesc">Retorna todas as postagens de um usuário específico.</p>
+                    
+                    <h3 data-i18n="titleParams">Parâmetros</h3>
+                    <div class="params-table">
+                        <div class="param-row">
+                            <span class="param-name">userId</span>
+                            <span class="param-type">string</span>
+                            <span class="param-info" data-i18n="paramUserDesc">ID do usuário</span>
+                            <span class="param-example">ex: 550e8400-e29b-41d4-a716-446655440000</span>
+                        </div>
+                    </div>
+
+                    <h3 data-i18n="titleReqExample">Exemplo de requisição</h3>
+                    <div class="code-container">
+                        <pre><code>GET http://localhost:3000/users/550e8400-e29b-41d4-a716-446655440000/posts</code></pre>
+                    </div>
+
+                    <h3 data-i18n="titleSuccessRes">Resposta de sucesso <span class="status-code green">200 OK</span></h3>
+                    <div class="code-container">
+                        <button class="btn-copy" aria-label="Copy code block"><i class="fa-regular fa-copy"></i> <span data-i18n="btnCopy">Copiar</span></button>
+<pre><code>[
+  {
+    "id": "a1b2c3d4-e5f6-4711-9abc-1234567890ab",
+    "userId": "550e8400-e29b-41d4-a716-446655440000",
+    "title": "Aprendendo TDD com Node.js e TypeScript",
+    "content": "TDD é uma abordagem incrível para desenvolvimento backend.",
+    "createdAt": "2026-10-14T15:30:00.000Z"
+  }
+]</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: DELETE /posts/:postId -->
+            <section id="delete-posts" class="tab-content">
+                <div class="card-endpoint">
+                    <div class="endpoint-header">
+                        <div class="endpoint-badge delete">DELETE</div>
+                        <div class="endpoint-path">/posts/:postId</div>
+                        <button class="btn-test" data-i18n="btnTest">Testar endpoint</button>
+                    </div>
+                    <p class="endpoint-description" data-i18n="deleteDesc">Exclui uma postagem específica.</p>
+                    
+                    <h3 data-i18n="titleParams">Parâmetros</h3>
+                    <div class="params-table">
+                        <div class="param-row">
+                            <span class="param-name">postId</span>
+                            <span class="param-type">string</span>
+                            <span class="param-info" data-i18n="paramPostDesc">ID da postagem</span>
+                            <span class="param-example">ex: a1b2c3d4-e5f6-4711-9abc-1234567890ab</span>
+                        </div>
+                    </div>
+
+                    <h3 data-i18n="titleReqExample">Exemplo de requisição</h3>
+                    <div class="code-container">
+                        <pre><code>DELETE http://localhost:3000/posts/a1b2c3d4-e5f6-4711-9abc-1234567890ab</code></pre>
+                    </div>
+
+                    <h3 data-i18n="titleSuccessRes">Resposta de sucesso <span class="status-code green">200 OK</span></h3>
+                    <div class="code-container">
+                        <button class="btn-copy" aria-label="Copy code block"><i class="fa-regular fa-copy"></i> <span data-i18n="btnCopy">Copiar</span></button>
+<pre><code>{
+  "message": "Postagem excluída com sucesso",
+  "postId": "a1b2c3d4-e5f6-4711-9abc-1234567890ab"
+}</code></pre>
+                    </div>
+
+                    <h3 data-i18n="titleErrorRes">Resposta de erro <span class="status-code red">404 Not Found</span></h3>
+                    <div class="code-container">
+                        <button class="btn-copy" aria-label="Copy code block"><i class="fa-regular fa-copy"></i> <span data-i18n="btnCopy">Copiar</span></button>
+<pre><code>{
+  "message": "Postagem não encontrada"
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Global Footer -->
+            <footer class="main-footer">
+                <span data-i18n="footerCopyright">© 2026 TDD Backend API</span> • <span data-i18n="footerMade">Feito com</span> <i class="fa-solid fa-heart" style="color: #ef4444;"></i> <span data-i18n="footerTech">usando Node.js, TypeScript e TDD</span>
+            </footer>
+        </main>
+    </div>
+
+    <script src="./src/script.js"></script>
+</body>
+</html>
